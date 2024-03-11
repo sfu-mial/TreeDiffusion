@@ -1,7 +1,8 @@
 # Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields
 This is the official code supporting our paper:
 > Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields </br>
-> [Ashish Sinha](https://sinashish.github.io/) and [Ghassan Hamarneh](https://www.medicalimageanalysis.com/home)
+> [Ashish Sinha](https://sinashish.github.io/) and [Ghassan Hamarneh](https://www.medicalimageanalysis.com/home) </br>
+> Simon Fraser University
 
 ## Abstract
 
