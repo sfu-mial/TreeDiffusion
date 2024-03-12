@@ -5,14 +5,14 @@ from pathlib import Path
 from glob import glob
 import numpy as np
 import h5py
-from utils import (
+from .utils import (
     get_mlp_params_as_matrix,
     flatten_mlp_params,
     unflatten_mlp_params,
     select_sampling_method_online,
 )
-from utils import flatten_mlp_params
-from models import ResnetFC
+
+from .models import ResnetFC
 
 from tqdm import tqdm, trange
 
@@ -24,48 +24,6 @@ def normalize_points(coords, scale=0.9):
     coords = (coords - coord_min) / (coord_max - coord_min)  # (0, 1)
     coords = (coords - 0.5) * (2.0 * scale)
     return coords
-
-
-class VascResnetCache(Dataset):
-    def __init__(self, inrs_root=None, split="train", sample_sd=None):
-        self.inrs_root = inrs_root
-        self.sample_sd = ResnetFC(d_in=3, d_latent=0, d_out=1).state_dict()
-        self.split = split
-        files = np.loadtxt(
-            str(self.inrs_root.parent / "vasc_splits" / f"{split}_split_1.txt"),
-            dtype=str,
-        )
-        files = sorted(files.tolist())[:]
-        self.mlps_paths = [str(self.inrs_root / x) for x in files][:]
-        load_fn = lambda x: torch.load(x, map_location="cpu")
-        self.mlps = [load_fn(x) for x in tqdm(self.mlps_paths)]
-        self.vasc_names = ["_".join(x.split("_")[:2]) for x in files]
-        self.intra_names = [x.split("_")[0] for x in files]
-
-        self.intra_objs = [
-            Path("/localscratch/asa409/intra_vessels")
-            / "processed_sdfs"
-            / f"{x}_fixed.h5"
-            for x in self.intra_names
-        ]
-        self.vasc_objs = [
-            Path("/localscratch/asa409/intra_vessels")
-            / "processed_sdfs"
-            / f"{x}_WT_fixed.h5"
-            for x in self.vasc_names
-        ]
-        dataroot1 = "/localscratch/asa409/intra_vessels/vessels"
-        dataroot = "/localscratch/asa409/watertight_pifu_new/"
-        self.vasc_meshes = [
-            Path(dataroot) / "GEO/OBJ" / x / f"{x}_fixed.obj" for x in self.vasc_names
-        ]
-        self.all_files = [
-            Path(x) for x in glob(str(Path(dataroot1) / "*.obj"))
-        ]  # intra
-        self.all_files = [
-            Path(x) for x in glob(str(Path(dataroot) / "CACHE" / "*.npz"))
-        ]  # vasc
-        self.all_h5_files = [h5py.File(fname, "r") for fname in self.vasc_objs]
 
 
 class AxisScaling(object):

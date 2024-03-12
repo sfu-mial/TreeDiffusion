@@ -24,12 +24,7 @@ from tqdm import tqdm, trange
 from datetime import datetime
 import pytorch_lightning as pl
 import sys
-from models import ResnetFC
-from utils import (
-    flatten_mlp_params,
-    get_mlp_params_as_matrix,
-    select_sampling_method_online,
-)
+from .models import ResnetFC
 
 import mcubes
 import trimesh
@@ -43,16 +38,19 @@ from scipy.spatial.transform import Rotation
 from tqdm import tqdm
 
 import wandb
-from diffusion.gaussian_diffusion import (
+from .diffusion.gaussian_diffusion import (
     GaussianDiffusion,
     LossType,
     ModelMeanType,
     ModelVarType,
     get_named_beta_schedule,
 )
-from evaluation_metrics_3d import compute_all_metrics, compute_all_metrics_4d
-from utils import (
+from .evaluation_metrics_3d import compute_all_metrics, compute_all_metrics_4d
+from .utils import (
     calculate_fid_3d,
+    flatten_mlp_params,
+    get_mlp_params_as_matrix,
+    select_sampling_method_online,
     Config,
     generate_mlp_from_weights,
     render_mesh,

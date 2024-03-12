@@ -20,8 +20,9 @@ from tqdm import tqdm, trange
 import argparse
 import pytorch_lightning as pl
 from src.models import ResnetFC
-from src.utils import select_sampling_method_online
+from src.utils import select_sampling_method_online, extract_mesh_from_mlp
 from pathlib import Path
+
 
 pl.seed_everything(1997)
 
@@ -32,14 +33,12 @@ torch.cuda.manual_seed(1997)
 
 def overfit(args):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    mlp = ResnetFC(d_in=3, d_out=1, n_layers=args.n_blocks, d_hidden=args.d_hidden)
-    mlp = mlp.to(device)
+    model = ResnetFC(d_in=3, d_out=1, n_blocks=args.n_blocks, d_hidden=args.d_hidden)
+    model = model.to(device)
 
-    optimizer = torch.optim.Adam(
-        mlp.parameters(), lr=args.lr, weight_decay=args.weight_decay
-    )
+    optimizer = torch.optim.Adam(model.parameters(), lr=args.lr)
     filename = Path(args.pcd_path)
-    out_root = Path(args.output_dir)
+    out_root = Path(args.output_dir) / "preds"
     out_root.mkdir(exist_ok=True, parents=True)
     print(f"Overfitting on {filename}")
     data = select_sampling_method_online(
@@ -57,6 +56,7 @@ def overfit(args):
         if i % 10 == 0:
             print(f"Mesh: {data['name']} | Iter: {i} | Loss: {loss.item()}")
         if i % 500 == 0:
+            # sample new points every 500 iterations for robust fitting
             try:
                 with torch.no_grad():
                     model.eval()
@@ -72,7 +72,7 @@ def overfit(args):
                 model.state_dict(),
                 str(save_name),
             )
-            print(f"{file} overfitted and saved to {out_root}")
+            print(f"{filename} overfitted and saved to {out_root}")
 
 
 if __name__ == "__main__":
@@ -94,7 +94,7 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--output_dir",
-        default="/localscratch/asa409/intra_vessels/output/",
+        default="./output/",
         help="path where to save, empty for no saving",
     )
     parser.add_argument(
@@ -109,11 +109,10 @@ if __name__ == "__main__":
     )
     parser.add_argument(
         "--pcd_path",
-        default="/localscratch/asa409/intra_vessels/INR_PROCESSED_DATA/VASC_INR_occ/messh.ply",
+        default="/path/to/mesh.ply",
         type=str,
         help="path of 3D shape as .obj/.ply",
     )
-    return parser
     args = parser.parse_args()
 
     overfit(args)

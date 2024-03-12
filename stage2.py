@@ -38,8 +38,6 @@ import numpy as np
 import torch
 import torch.backends.cudnn as cudnn
 from torch.utils.data import ConcatDataset, random_split
-import util.lr_decay as lrd
-import util.misc as misc
 from glob import glob
 import wandb
 from tqdm import tqdm
@@ -62,9 +60,6 @@ from src.utils import (
 
 import mcubes
 import trimesh
-
-sys.path.append("siren")
-
 from src.models import ResnetFC
 
 
@@ -377,7 +372,11 @@ if __name__ == "__main__":
         type=str,
         choices=["MSE", "RESCALED_MSE", "KL", "RESCALED_KL"],
     )
-    return parser
     args = parser.parse_args()
+    args.output_dir = Path(args.output_dir)
+    args.output_dir.mkdir(parents=True, exist_ok=True)
+    args.log_dir = Path(args.log_dir)
+    args.log_dir.mkdir(parents=True, exist_ok=True)
+    args.data_path = Path(args.data_path)
 
     run(args)
