@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 #### Stage 1
 ```
-python stage1.py --pcd_path /path/to/data --iter <no. of iterations> --nsample <no. of points to sample>
+python stage1.py --pcd_path /path/to/data --epochs <no. of iterations> --nsample <no. of points to sample>
 ```
 
 #### Stage 2
