@@ -33,13 +33,12 @@ python stage2.py --epochs <no. of epochs> --dset_name <dataset to use>
 ## Cite
 
 ```
-@article{sinha24tree,
-    title={Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields},
-    author={Sinha, Ashish and Hamarneh, Ghassan},
-    journal={arXiv preprint arXiv:2403.xxxx},
-    year={2024},
-    eprint={2403.xxxx},
-    archivePrefix={arXiv},
-    primaryClass={cs.CV}
+@misc{sinha2024treeinr,
+      title={Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields}, 
+      author={Ashish Sinha and Ghassan Hamarneh},
+      year={2024},
+      eprint={2403.08974},
+      archivePrefix={arXiv},
+      primaryClass={cs.CV}
 }
 ```
