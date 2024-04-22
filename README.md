@@ -3,7 +3,7 @@ This is the official code supporting our paper:
 > [Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields](https://arxiv.org/abs/2403.08974) </br>
 > [Ashish Sinha](https://sinashish.github.io/) and [Ghassan Hamarneh](https://www.medicalimageanalysis.com/home) </br>
 > Simon Fraser University </br>
-> [[Paper]](https://arxiv.org/pdf/2403.08974.pdf) | [[arxiv]](https://arxiv.org/abs/2403.08974) | [[Code]](./)
+> [[Paper]](./assets/paper.pdf) | [[arxiv]](https://arxiv.org/abs/2403.08974) | [[Code]](./)
 
 ## Abstract
 
