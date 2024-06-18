@@ -1,9 +1,11 @@
-# Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields
+# $TrIND$: Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields
 This is the official code supporting our paper:
 > [Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields](https://arxiv.org/abs/2403.08974) </br>
 > [Ashish Sinha](https://sinashish.github.io/) and [Ghassan Hamarneh](https://www.medicalimageanalysis.com/home) </br>
 > Simon Fraser University </br>
 > [[Paper]](./assets/paper.pdf) | [[arxiv]](https://arxiv.org/abs/2403.08974) | [[Poster]](./assets/poster.pdf) | [[Code]](./)
+
+🎉🎉 The Paper is now accepted to MICCAI '24. 🎉🎉
 
 ## Abstract
 
@@ -34,12 +36,10 @@ python stage2.py --epochs <no. of epochs> --dset_name <dataset to use>
 ## Cite
 
 ```
-@misc{sinha2024treeinr,
+@inproceedings{sinha2024trind,
       title={Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields}, 
       author={Ashish Sinha and Ghassan Hamarneh},
+      booktitle={Proceedings of the International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI)},
       year={2024},
-      eprint={2403.08974},
-      archivePrefix={arXiv},
-      primaryClass={cs.CV}
 }
 ```
