@@ -4,12 +4,12 @@ url: "https://github.com/sfu-mial/TreeDiffusion"
 preferred-citation:
   type: conference-paper
   authors:
-  - family-names: "Sinha"
-    given-names: "Ashish"
-    orcid: "https://orcid.org/0000-0003-1395-6629"
-  - family-names: "Hamarneh"
-    given-names: "Ghassan"
-    orcid: "https://orcid.org/0000-0001-5040-7448"
+    - family-names: "Sinha"
+      given-names: "Ashish"
+      orcid: "https://orcid.org/0000-0003-1395-6629"
+    - family-names: "Hamarneh"
+      given-names: "Ghassan"
+      orcid: "https://orcid.org/0000-0001-5040-7448"
   title: "TrIND: Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields"
   journal: "Proceedings of the International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI)"
   year: 2024
