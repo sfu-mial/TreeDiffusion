@@ -1,0 +1,15 @@
+cff-version: 1.2.0
+message: "If you use any part of this repository in your research, please cite it as below."
+preferred-citation:
+type: article
+  authors:
+  - family-names: "Sinha"
+    given-names: "Ashish"
+    orcid: "https://orcid.org/0000-0003-1395-6629"
+  - family-names: "Hamarneh"
+    given-names: "Ghassan"
+    orcid: "https://orcid.org/0000-0001-5040-7448"
+  title: "TrIND: Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields"
+  url: "https://github.com/sfu-mial/TreeDiffusion"
+  year: 2024
+  conference: "MICCAI"
