@@ -11,5 +11,5 @@ preferred-citation:
     given-names: "Ghassan"
     orcid: "https://orcid.org/0000-0001-5040-7448"
   title: "TrIND: Representing Anatomical Trees by Denoising Diffusion of Implicit Neural Fields"
-  journal: "Proceedings of the International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI)"
+  booktitle: "Proceedings of the International Conference on Medical Image Computing and Computer-Assisted Intervention (MICCAI)"
   year: 2024
